@@ -37,7 +37,7 @@
         <div v-if="successMessage" class="success-message text-green-700 bg-green-100 border border-green-400 rounded-md p-3 text-center">
           {{ successMessage }}
         </div>
-
+        
         <button type="submit" class="login-button w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-lg">
           Iniciar Sesión
         </button>
