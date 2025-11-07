@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // Importa tus componentes/vistas desde la carpeta 'views'
 import Login from '../views/Login.vue'
 import Registro from '../views/Registro.vue'
+import MainPage from '../views/MainPage.vue'
 
 // Define las URLS y el componente asociado
 const routes = [
@@ -20,7 +21,13 @@ const routes = [
         path: '/registro', // URL: /registro
         name: 'Registro',
         component: Registro
-    }
+    },
+    {
+        path: '/mainpage',
+        name: 'Main',
+        component: MainPage
+    },
+
 ]
 
 // Crea la instancia del router

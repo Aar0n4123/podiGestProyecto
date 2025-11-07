@@ -40,7 +40,7 @@
           {{ successMessage }}
         </div>
         
-        <button type="submit" class="login-button w-full py-2 px-4 bg-amber-500 text-white rounded-md hover:bg-amber-700 transition-colors text-lg">
+        <button router-link to="/mainpage" type="submit" class="login-button w-full py-2 px-4 bg-amber-500 text-white rounded-md hover:bg-amber-700 transition-colors text-lg">
           Iniciar Sesión
         </button>
       </form>
