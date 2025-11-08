@@ -1,0 +1,23 @@
+[
+  {
+    "id": "notif-001",
+    "fechaEnvio": "2025-01-10T09:00:00",
+    "asunto": "Recordatorio de cita",
+    "remitente": "Clínica Podológica",
+    "mensaje": "Estimado paciente, le recordamos su cita programada para el 12 de enero de 2025 a las 10:00 AM."
+  },
+  {
+    "id": "notif-002",
+    "fechaEnvio": "2025-01-08T15:30:00",
+    "asunto": "Actualización de cita",
+    "remitente": "Clínica Podológica",
+    "mensaje": "Su cita del 15 de enero ha sido reprogramada para el 16 de enero a las 11:30 AM."
+  },
+  {
+    "id": "notif-003",
+    "fechaEnvio": "2024-12-25T08:15:00",
+    "asunto": "Cita cancelada",
+    "remitente": "Clínica Podológica",
+    "mensaje": "Lamentamos informarle que su cita del 27 de diciembre ha sido cancelada. Por favor, comuníquese para reagendar."
+  }
+]
