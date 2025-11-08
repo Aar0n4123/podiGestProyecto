@@ -5,6 +5,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Registro from '../views/Registro.vue'
 import MainPage from '../views/MainPage.vue'
+import Profile from '../views/Profile.vue'
+import Notifications from '../views/Notifications.vue'
+import Information from '../views/Information.vue'
+import Appointments from '../views/Appointments.vue'
+import Configuration from '../views/Configuration.vue'
 
 // Define las URLS y el componente asociado
 const routes = [
@@ -27,6 +32,32 @@ const routes = [
         name: 'Main',
         component: MainPage
     },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: Profile
+    },
+    {
+        path: '/notifications',
+        name: 'notifications',
+        component: Notifications
+    },
+    {
+        path: '/information',
+        name: 'information',
+        component: Information
+    },
+    {
+        path: '/appointments',
+        name: 'appointments',
+        component: Appointments
+    },
+    {
+        path: '/configuration',
+        name: 'configuration',
+        component: Configuration
+    },
+    
 
 ]
 

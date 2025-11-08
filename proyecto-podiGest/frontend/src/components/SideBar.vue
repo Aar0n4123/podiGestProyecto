@@ -9,7 +9,6 @@ import {
   BellIcon,
   SquaresPlusIcon,
   DocumentIcon,
-  XCircleIcon,
   XMarkIcon
 } from '@heroicons/vue/24/outline'
 
