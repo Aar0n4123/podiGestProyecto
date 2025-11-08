@@ -122,7 +122,7 @@ export default {
           session.set('currentUser', userData);
 
 
-          this.$router.push('/dashboard-cliente');
+          this.$router.push('/mainpage');
 
 
         } else if (response.status === 401) {
