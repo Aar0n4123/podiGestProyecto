@@ -26,7 +26,7 @@ const navItems = [
   { name: 'Inicio', to: '/mainpage', icon: HomeIcon, roles: ['especialista','cliente'] },
   { name: 'Perfil', to: '/profile', icon: UserIcon, roles: ['especialista','cliente'] },
   { name: 'Notificaciones', to: '/notifications', icon: BellIcon, roles: ['especialista','cliente'] },
-  { name: 'Citas', to: '/appointments', icon: SquaresPlusIcon, roles: ['especialista','cliente'] },
+  { name: 'Citas', to: '/mis-citas', icon: SquaresPlusIcon, roles: ['especialista','cliente'] },
   { name: 'Atención al Cliente', to: '/configuration', icon: CogIcon, roles: ['especialista','cliente'] },
   { name: 'Información', to: '/information', icon: DocumentIcon, roles: ['especialista','cliente'] },
   { name: 'Gestión de Especialista', to: '/especialist', icon: HeartIcon, roles: ['especialista'] },

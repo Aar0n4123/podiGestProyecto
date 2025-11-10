@@ -1,9 +1,9 @@
 [ {
-  "cedula" : "27561556",
+  "cedula" : "123465",
   "nombre" : "Gabriel",
   "apellido" : "Bracho",
   "fechaNacimiento" : [ 1999, 9, 27 ],
-  "correoElectronico" : "gebracho.23@est.ucab.edu.ve",
-  "contrasenia" : "12345",
+  "correoElectronico" : "gabrielbrachobf@gmail.com",
+  "contrasenia" : "123",
   "rol" : "paciente"
 } ]

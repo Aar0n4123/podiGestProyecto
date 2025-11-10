@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -79,6 +80,17 @@ public class CrearUsuarioController {
             return ResponseEntity
                     .status(HttpStatus.UNAUTHORIZED)
                     .body("Credenciales incorrectas. Verifique su correo y contraseña.");
+        }
+    }
+
+    @GetMapping("/especialistas")
+    public ResponseEntity<List<Usuario>> obtenerEspecialistas() {
+        try {
+            List<Usuario> especialistas = usuarioService.obtenerEspecialistas();
+            return ResponseEntity.ok(especialistas);
+        } catch (Exception e) {
+            System.err.println("Error al obtener especialistas: " + e.getMessage());
+            return ResponseEntity.internalServerError().build();
         }
     }
 }

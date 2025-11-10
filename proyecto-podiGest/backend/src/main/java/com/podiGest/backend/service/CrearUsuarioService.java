@@ -159,4 +159,10 @@ public class CrearUsuarioService {
         }
     }
 
+    public List<Usuario> obtenerEspecialistas() {
+        return listaUsuarios.stream()
+                .filter(u -> u.getRol() != null && u.getRol().equalsIgnoreCase("especialista"))
+                .toList();
+    }
+
 }

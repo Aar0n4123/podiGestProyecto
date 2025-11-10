@@ -1,38 +1,38 @@
 package com.podiGest.backend.model;
 
 import lombok.Data;
-import java.time.LocalDateTime;
 
 @Data
 public class Cita {
-
-    private String id; // Usaremos un UUID (String) para un ID único
-    private String pacienteCedula; // Cédula del paciente (link a Usuario)
-    private String especialistaCedula; // Cédula del especialista (link a Usuario)
-
-    // Usamos LocalDateTime para tener fecha y hora juntas
-    private LocalDateTime fechaHoraInicio;
-
-    // Según el ERS, las citas duran 60 min
-    private LocalDateTime fechaHoraFin;
-
-    private String estado; // "PENDIENTE", "CONFIRMADA", "CANCELADA"
-    private String descripcion;
+    private String id;
+    private String pacienteNombre;
+    private String pacienteCorreo;
+    private String pacienteTelefono;
+    private String especialista;
+    private String especialidadBuscada;
+    private String fecha;
+    private String hora;
+    private String razonConsulta;
+    private String estado;
+    private String fechaCreacion;
 
     public Cita() {
-        // Constructor vacío para Jackson (JSON)
     }
 
-
-    // Constructor para crear una cita nueva
-    public Cita(String id, String pacienteCedula, String especialistaCedula, LocalDateTime fechaHoraInicio, String descripcion) {
+    public Cita(String id, String pacienteNombre, String pacienteCorreo, String pacienteTelefono,
+                String especialista, String especialidadBuscada, String fecha, String hora,
+                String razonConsulta, String estado, String fechaCreacion) {
         this.id = id;
-        this.pacienteCedula = pacienteCedula;
-        this.especialistaCedula = especialistaCedula;
-        this.fechaHoraInicio = fechaHoraInicio;
-        // Regla de Negocio: 60 minutos por cita
-        this.fechaHoraFin = fechaHoraInicio.plusMinutes(60);
-        this.estado = "PENDIENTE";
-        this.descripcion = (descripcion != null) ? descripcion : "";
+        this.pacienteNombre = pacienteNombre;
+        this.pacienteCorreo = pacienteCorreo;
+        this.pacienteTelefono = pacienteTelefono;
+        this.especialista = especialista;
+        this.especialidadBuscada = especialidadBuscada;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.razonConsulta = razonConsulta;
+        this.estado = estado;
+        this.fechaCreacion = fechaCreacion;
     }
 }
+

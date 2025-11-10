@@ -8,8 +8,9 @@ import MainPage from '../views/MainPage.vue'
 import Perfil from '../views/Perfil.vue'
 import Notifications from '../views/Notifications.vue'
 import Information from '../views/Information.vue'
-import Appointments from '../views/Appointments.vue'
 import Configuration from '../views/Configuration.vue'
+import AgendarCita from '../views/AgendarCita.vue'
+import MisCitas from '../views/MisCitas.vue'
 
 // Define las URLS y el componente asociado
 const routes = [
@@ -48,17 +49,20 @@ const routes = [
         component: Information
     },
     {
-        path: '/appointments',
-        name: 'appointments',
-        component: Appointments
-    },
-    {
         path: '/configuration',
         name: 'configuration',
         component: Configuration
     },
-    
-
+    {
+        path: '/agendar-cita',
+        name: 'agendar-cita',
+        component: AgendarCita
+    },
+    {
+        path: '/mis-citas',
+        name: 'mis-citas',
+        component: MisCitas
+    }
 ]
 
 // Crea la instancia del router
