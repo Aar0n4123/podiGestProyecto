@@ -24,7 +24,7 @@ public class ConsultarPerfilService {
      * Constructor que inyecta la ruta del archivo de usuarioInicioSesion desde application.properties
      */
     public ConsultarPerfilService(@Value("${sesion.file.path}") String sesionPath) {
-        this.sesionPath = Paths.get(sesionPath);
+        this.sesionPath = Paths.get(sesionPath).normalize();
         this.objectMapper = new ObjectMapper();
         this.objectMapper.registerModule(new JavaTimeModule());
     }

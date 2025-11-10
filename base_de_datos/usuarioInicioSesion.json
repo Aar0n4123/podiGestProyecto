@@ -1,9 +1,9 @@
 [ {
-  "cedula" : "10800900",
-  "nombre" : "Ricardo",
-  "apellido" : "Barrios ",
-  "fechaNacimiento" : [ 2000, 12, 12 ],
-  "correoElectronico" : "r@gmail.com",
-  "contrasenia" : "admin",
-  "rol" : "paciente"
+  "cedula" : "30 902794",
+  "nombre" : "victoria",
+  "apellido" : "carmona",
+  "fechaNacimiento" : [ 2025, 11, 3 ],
+  "correoElectronico" : "viki@ejemplo.com",
+  "contrasenia" : "viki123",
+  "rol" : null
 } ]
