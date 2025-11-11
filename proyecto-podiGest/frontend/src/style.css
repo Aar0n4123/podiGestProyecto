@@ -49,7 +49,7 @@ button {
 }
 
 button:hover {
-  border-color: #FFA000;
+  border-color: #2563EB; /* 🔵 cambiado de #FFA000 (ámbar) a azul-600 */
 }
 button:focus,
 button:focus-visible {
@@ -70,22 +70,19 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #FFF5E5;
+    background-color: #F8FBFF; /* opcional: azul muy claro en vez de #FFF5E5 */
   }
   a:hover {
-    color: #747bff;
+    color: #3B82F6; /* azul-500 */
   }
-
 }
-
 
 @media (prefers-color-scheme: dark) {
   :root {
     color: #213547;
-    background-color: #FFF5E5;
+    background-color: #F8FBFF; /* opcional: azul muy claro */
   }
   a:hover {
-    color: #747bff;
+    color: #3B82F6; /* azul-500 */
   }
-
 }

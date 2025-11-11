@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { defineProps, defineEmits } from 'vue'
 import {
@@ -15,23 +16,63 @@ import {
 
 const props = defineProps<{ isCollapsed: boolean }>()
 const emit = defineEmits(['toggle'])
-
 const route = useRoute()
 
-// Rol actual del usuario (esto vendría de tu login/backend)
-const userRole = 'cliente' // especialista o cliente
+// Interfaz del usuario
+interface Usuario {
+  cedula: string
+  nombre: string
+  apellido: string
+  fechaNacimiento: [number, number, number]
+  correoElectronico: string
+  rol: string
+}
+
+const usuario = ref<Usuario | null>(null)
+const cargando = ref(true)
+const errorCarga = ref('')
+
+// Cargar perfil desde backend
+const cargarPerfil = async () => {
+  cargando.value = true
+  errorCarga.value = ''
+  try {
+    const response = await fetch("http://localhost:8080/api/perfil")
+    if (response.ok) {
+      usuario.value = await response.json()
+    } else {
+      errorCarga.value = response.status === 401
+        ? "No hay una sesión activa. Por favor, inicia sesión."
+        : `Error ${response.status}: ${response.statusText}`
+      usuario.value = null
+    }
+  } catch (error) {
+    errorCarga.value = "Error de red. No se pudo conectar al servidor."
+    console.error("Error al cargar perfil:", error)
+    usuario.value = null
+  } finally {
+    cargando.value = false
+  }
+}
+
+onMounted(() => {
+  cargarPerfil()
+})
 
 // Items con restricción de roles
 const navItems = [
-  { name: 'Inicio', to: '/mainpage', icon: HomeIcon, roles: ['especialista','cliente'] },
-  { name: 'Perfil', to: '/profile', icon: UserIcon, roles: ['especialista','cliente'] },
-  { name: 'Notificaciones', to: '/notifications', icon: BellIcon, roles: ['especialista','cliente'] },
-  { name: 'Citas', to: '/mis-citas', icon: SquaresPlusIcon, roles: ['especialista','cliente'] },
-  { name: 'Atención al Cliente', to: '/configuration', icon: CogIcon, roles: ['especialista','cliente'] },
-  { name: 'Información', to: '/information', icon: DocumentIcon, roles: ['especialista','cliente'] },
+  { name: 'Inicio', to: '/mainpage', icon: HomeIcon, roles: ['especialista','paciente'] },
+  { name: 'Perfil', to: '/profile', icon: UserIcon, roles: ['especialista','paciente'] },
+  { name: 'Notificaciones', to: '/notifications', icon: BellIcon, roles: ['especialista','paciente'] },
+  { name: 'Citas', to: '/mis-citas', icon: SquaresPlusIcon, roles: ['especialista','paciente'] },
+  { name: 'Atención al Cliente', to: '/configuration', icon: CogIcon, roles: ['especialista','paciente'] },
+  { name: 'Información', to: '/information', icon: DocumentIcon, roles: ['especialista','paciente'] },
   { name: 'Gestión de Especialista', to: '/especialist', icon: HeartIcon, roles: ['especialista'] },
-  { name: 'Salir', to: '/', icon: XMarkIcon, roles: ['especialista','cliente'] },
+  { name: 'Salir', to: '/', icon: XMarkIcon, roles: ['especialista','paciente'] },
 ]
+
+// Normalizar rol para evitar problemas de mayúsculas/minúsculas
+const userRole = computed(() => usuario.value?.rol?.toLowerCase() || '')
 
 const isActive = (path: string) => route.path === path
 </script>
@@ -44,9 +85,9 @@ const isActive = (path: string) => route.path === path
     ]"
   >
     <!-- Header -->
-    <div class="flex items-center justify-between p-4 border-b border-amber-700">
+    <div class="flex items-center justify-between p-4 border-b border-blue-700 hover:border-blue-700">
       <span v-if="!props.isCollapsed" class="text-xl font-bold">PodiGest</span>
-      <button @click="emit('toggle')" class="text-white hover:text-amber-500 flex">
+      <button @click="emit('toggle')" class="text-white hover:text-blue-500 flex hover:border-blue-500">
         <Bars3Icon class="w-6 h-6" />
       </button>
     </div>
@@ -54,10 +95,13 @@ const isActive = (path: string) => route.path === path
     <!-- Navigation -->
     <nav class="flex-1 overflow-y-auto">
       <ul>
-        <li v-for="item in navItems.filter(i => i.roles.includes(userRole))" :key="item.name">
+        <li
+          v-for="item in navItems.filter(i => i.roles.includes(userRole))"
+          :key="item.name"
+        >
           <RouterLink
             :to="item.to"
-            class="group flex items-center gap-3 px-4 py-3 hover:bg-amber-500 transition-colors duration-200"
+            class="group flex items-center gap-3 px-4 py-3 hover:bg-blue-500 transition-colors duration-200"
             :class="{ 'bg-gray-800': isActive(item.to) }"
           >
             <component :is="item.icon" class="text-white group-hover:text-black w-5 h-5" />
@@ -71,5 +115,9 @@ const isActive = (path: string) => route.path === path
         </li>
       </ul>
     </nav>
+
+    <!-- Estado de carga o error -->
+    <div v-if="cargando" class="p-4 text-sm text-gray-400">Cargando menú...</div>
+    <div v-else-if="errorCarga" class="p-4 text-sm text-red-400">{{ errorCarga }}</div>
   </aside>
 </template>
